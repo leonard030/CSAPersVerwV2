@@ -1,0 +1,169 @@
+body{
+    margin: 0;
+    font-family: Roboto;
+}
+#header {
+font-family: Roboto;
+}
+
+#header h1 {
+    margin: 0;
+    padding: 1.5vw;
+    font-size: 1.5vw;
+    line-height: 1.5vw;
+    display: inline-block;
+    color: #9fa1a2;
+}
+#header h3 {
+    margin: 0;
+    padding: 1.6vw;
+    font-size: 1vw;
+    font-weight: lighter;
+    line-height: 1vw;
+    display: inline-block;
+    float: right;
+    color: #9fa1a2;
+}
+
+.menu{
+    display: block;
+}
+
+.menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #9fa1a2;
+}
+
+div.menu li {
+    float: left;
+}
+
+div.menu li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 1vw 2vw;
+    text-decoration: none;
+    font-family: "Open Sans";
+    font-size: 1vw;
+}
+
+div.menu li a:hover {
+    background-color: #b6b8b9;
+}
+
+.background {
+    margin: 0;
+    background: url(./Bilder/background.jpg);
+    background-size: cover;
+}
+
+
+div.transbox {
+    height: 40vw;
+    width:  30vw;
+    margin: 0px;
+    background-color: black;
+    opacity: 0.4;
+}
+
+div.transbox p {
+    margin: 0;
+    color: white;
+}
+
+div.container p{
+    padding: 1vw;
+}
+
+#userNameDiv {
+    font-family: "Open Sans";
+    font-weight: lighter;
+    font-size: 1.3vw;
+    color: white;
+    padding: 0;
+    margin: auto;
+    width: 20vw;
+    padding-top: 5vw;
+}
+
+#passwordDiv {
+    font-family: "Open Sans";
+    font-weight: lighter;
+    font-size: 1.3vw;
+    color: white;
+    padding-top: 1.3vw;
+    margin: auto;
+    width: 20vw;
+}
+
+#submitBtnDiv {
+    margin: auto;
+    margin-top: 1vw;
+    width:20vw;
+    height: 3vw;
+    overflow: hidden;
+}
+
+.submitBtn{
+    width:20vw;
+    height:2vw;
+    font-size: 1vw;
+    margin:auto;
+}
+
+.inputBox {
+    width: 20vw;
+    padding: 1vw;
+    font-size: 1vw;
+}
+
+.addDiv{
+    margin: 0 auto;
+    background-color: #dfdfdf;
+}
+
+.addDiv h3{
+    background-color: #9fa1a2;
+    font-size: 1vw;
+    padding: 0.5vw;
+    color: white;
+}
+.button {
+    margin: 0 auto;
+    padding: 0.5vw;
+    float: left;
+}
+#logutBtn{
+    background-color: yellow;
+}
+/* Filter
+.ui-datatable {
+    margin-bottom: 25px
+}
+
+.ui-datatable .ui-datatable-header {
+    text-align: right !important;
+}
+
+.ui-button-text-only .ui-button-text {
+    padding: 0.3em 0.4em;
+}
+
+.ui-selectcheckboxmenu-panel .ui-selectcheckboxmenu-header .ui-chkbox {
+    visibility: hidden;
+}
+
+.ui-filter-column .ui-column-customfilter .custom-filter {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.year-spinner input {
+    width: 100%;
+    box-sizing: border-box;
+}
+*/

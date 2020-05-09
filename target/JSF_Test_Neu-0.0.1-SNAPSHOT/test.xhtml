@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+	<meta charset="ISO-8859-1" />
+	<title>Personalverwaltung</title>
+</h:head>
+
+<h:body>
+
+
+	<h:outputStylesheet library="css" name="style.css" />
+
+	<header>
+		<div class="container">
+			<img src="pics/headneu.jpg" width="165" height="85" style="float: left"
+				alt="Logo" />
+			<div id="branding"></div>
+			<nav>
+				<ul>
+					<li><a href="mb.htm">Mitarbeiter</a></li>
+					<li><a href="abt.htm">Abteilungen</a></li>
+					<li><a href="proj.htm">Projekte</a></li>
+					<li><a href="quali.htm">Qualifikationen</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+
+	<div id="userNameDiv" class="textPlacement">
+                        <h:outputLabel value="Username"/>
+                        <br/>
+                        <h:inputText class="inputBox" value="#{loginBean.userName}"/>
+                    </div>
+                    <div id="passwordDiv" class="textPlacement">
+                        <h:outputLabel value="Password"/>
+                        <br/>
+                        <h:inputSecret class="inputBox" value="#{loginBean.password}"/>
+                    </div>
+                    <div id="submitBtnDiv" class="textPlacement">
+                       <h:commandButton value="Login" class="submitBtn" action="#{loginBean.validateUserLogin}"/>
+                        <h:commandButton value="Login" class="submitBtn"  action="#{loginBean.validateUserLogin()}"/>
+                   </div>
+
+	<section>
+	<div id="stapel">
+    <img src="pics/b1.jpg" width="1074" height="560"
+      alt="Bild1"/>
+    <img src="pics/b2.jpg" width="1074" height="560"
+      alt="Bild2"/>
+    <img src="pics/b3.jpg" width="1074" height="560"
+      alt="Bild3"/>
+    <img src="pics/b1.jpg" width="1074" height="560"
+      alt="Bild1"/>
+    <img src="pics/b2.jpg" width="1074" height="560"
+      alt="Bild3"/>
+</div>
+		<center>
+			<br />
+			<h2>Willkomen bei der Personalverwaltung</h2>
+			<br />
+
+
+			<H3>Waehlen Sie bitte oben aus, in welcher Kategorie Sie suchen
+				moechten!</H3>
+		</center>
+	</section>
+</h:body>
+</html>
+
+
+
+
+

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta charset="utf-8" />
+	<f:metadata>
+		<f:viewAction action="#{projekt.zeigeProjekt}" />
+	</f:metadata>
+	<link rel="stylesheet" href="main.css" />
+	<link
+		href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;900"
+		rel="stylesheet" />
+	<link
+		href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;800"
+		rel="stylesheet" />
+	<title>Projekte Verwalten</title>
+</h:head>
+<h:body>
+	<!-- Header -->
+	<div id="header">
+		<h1>Personalverwaltung</h1>
+		<h3>admin</h3>
+	</div>
+
+	<!--    menu    -->
+	<div class="menu">
+		<ul>
+			<li><a href="index.xhtml">Home</a></li>
+			<li><a href="admin-personal.xhtml">Personal</a></li>
+			<li><a href="admin-abteilung.xhtml">Abteilungen</a></li>
+			<li><a href="admin-qualifikation.xhtml">Qualifikationen</a></li>
+			<li><a href="admin-projekt.xhtml">Projekte</a></li>
+		</ul>
+	</div>
+
+	<!--    Table   -->
+	<h:form id="form">
+		<p:growl id="msgs" showDetail="true" />
+
+		<p:dataTable id="cars1" widgetVar="cars1" var="proj"
+			value="#{projekt.projList}" editable="true"
+			style="margin-bottom:20px" scrollable="true" scrollHeight="150">
+			<f:facet name="header">
+                Projekte Verwalten
+            </f:facet>
+
+			<p:column headerText="Projektnummer" sortBy="#{proj.projektNummer}"
+				filterBy="#{proj.projektNummer}">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="#{proj.projektNummer}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText id="modelInput" value="#{proj.projektNummer}"
+							style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+
+			<p:column headerText="Projektname" sortBy="#{proj.projektName}"
+				filterBy="#{proj.projektName}">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="#{proj.projektName}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText value="#{proj.projektName}" style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+
+			<p:column headerText="Projektfrist" sortBy="#{proj.projektFrist}"
+				filterBy="#{proj.projektFrist}">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="#{proj.projektFrist}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:datePicker value="#{proj.projektFrist}" locale="de"
+							monthNavigator="true" pattern="dd.MM.yyyy" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+
+			<p:column style="width:110px">
+				<p:rowEditor />
+				<p:commandButton action="#{projekt.updateProjekt(proj)}"
+					value="Update" />
+			</p:column>
+			<p:column style="width:110px">
+				<p:commandButton action="#{projekt.deleteProjekt(proj)}"
+					value="Delete" />
+			</p:column>
+		</p:dataTable>
+	</h:form>
+
+	<!-- ADD    -->
+	<div>
+		<h:form class="button">
+			<h:outputLink value="javascript:void(0)" onclick="PF('dlg').show();"
+				title="login">
+				<p:commandButton value="Add" />
+			</h:outputLink>
+
+			<p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+
+			<p:dialog header="Projekt Hinzufuegen" widgetVar="dlg"
+				resizable="false">
+				<h:panelGrid columns="2" cellpadding="5">
+
+					<h:outputLabel for="proName" value="Projektname:" />
+					<p:inputText id="proName" value="#{projekt.projektName}"
+						required="true" label="proName" />
+
+					<h:outputLabel for="proDeadline" value="Projektfrist:" />
+					<p:datePicker id="proDeadline" value="#{projekt.projektFrist}"
+						locale="de" monthNavigator="true" pattern="dd.MM.yyyy" />
+
+					<f:facet name="footer">
+						<p:commandButton value="Hinzufuegen" id="nonAjax"
+							action="#{projekt.saveProjekt()}" ajax="false" />
+					</f:facet>
+				</h:panelGrid>
+			</p:dialog>
+		</h:form>
+	</div>
+
+	<!--    Logout      -->
+	<div class="button">
+		<h:form>
+			<p:commandButton value="Logout" id="logutBtn"
+				action="#{logoutBean.logout}" ajax="false" />
+		</h:form>
+	</div>
+</h:body>
+</html>

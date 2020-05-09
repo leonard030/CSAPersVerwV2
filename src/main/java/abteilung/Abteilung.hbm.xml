@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="abteilung.Abteilung" table="abteilung" catalog="Personalverwaltung" optimistic-lock="version">
+          <id name="abteilungsNummer" type="java.lang.Integer">
+            <column name="abteilungsNummer" unique="true"/>
+            <generator class="increment" />
+        </id>
+        <property name="abteilungsName" type="string">
+            <column name="abteilungsName" />
+        </property>
+        <property name="fuehrungskraftName" type="string">
+            <column name="fuehrungskraftName" />
+        </property>
+        <property name="fuehrungskraftVorname" type="string">
+            <column name="fuehrungskraftVorname" />
+        </property>
+    </class>
+</hibernate-mapping> 
+

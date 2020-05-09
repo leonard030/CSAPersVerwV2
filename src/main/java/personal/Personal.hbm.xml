@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="personal.Personal" table="personal" catalog="Personalverwaltung" optimistic-lock="version">
+          <id name="personalNummer" type="java.lang.Integer">
+            <column name="personalNummer" unique="true"/>
+            <generator class="increment" />
+        </id>
+        <property name="personalName" type="string">
+            <column name="personalName" />
+        </property>
+        <property name="personalVorname" type="string">
+            <column name="personalVorname" />
+        </property>
+        <property name="personalGeburtsdatum" type="date">
+            <column name="personalGeburtsdatum" />
+        </property>
+        <property name="personalGeschlecht" type="char">
+            <column name="personalGeschlecht" />
+        </property>
+        <property name="rang" type="java.lang.Integer">
+            <column name="rang" />
+        </property>
+        <property name="abteilung" type="string">
+            <column name="abteilung" />
+        </property>
+        <property name="projekte" type="string">
+            <column name="projekte" />
+        </property>
+        <property name="qualifikationen" type="string">
+            <column name="qualifikationen" />
+        </property>
+        <!-- <set name="abt" table="pers_abt" cascade="save-update">
+        <key column="personalNummer"> </key>
+        <many-to-many column="abteilungsNummer" class="abteilung.Abteilung"/>
+        </set>  -->
+    </class>
+</hibernate-mapping> 
+

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<!--
+   IN WEB.XML hinzufuegen:
+    <context-param>
+        <param-name>primefaces.THEME</param-name>
+        <param-value>nova-light</param-value>
+    </context-param>
+-->
+<h:head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="utf-8"/>
+    <f:metadata>
+		<f:viewAction action="#{abteilung.zeigeAbteilung()}" />
+	</f:metadata>
+    <link rel="stylesheet" href="main.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;900" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;800" rel="stylesheet"/>
+    <title>Abteilung</title>
+</h:head>
+<h:body>
+    <div id="header">
+        <h1>Personalverwaltung</h1>
+        <h3>user</h3>
+    </div>
+    <!-- Menu -->
+    <div class="menu">
+        <ul>
+            <li><a href="index.xhtml">Home</a></li>
+            <li><a href="personal.xhtml">Personal</a></li>
+            <li><a href="abteilung.xhtml">Abteilungen</a></li>
+            <li><a href="qualifikation.xhtml">Qualifikationen</a></li>
+            <li><a href="projekt.xhtml">Projekte</a></li>
+        </ul>
+    </div>
+
+    <!-- Table -->
+    <h:form id="form">
+        <p:dataTable var="abt" value="#{abteilung.abteilungList}" scrollable="true" scrollHeight="150"> <!-- filteredValue="#{carBean.filteredCars}"-->
+            <f:facet name="header">Abteilungen</f:facet>
+            <p:column headerText="Nummer" sortBy="#{abt.abteilungsNummer}" filterBy="#{abt.abteilungsNummer}">
+                <h:outputText value="#{abt.abteilungsNummer}" />
+            </p:column>
+            <p:column headerText="Name" sortBy="#{abt.abteilungsName}" filterBy="#{abt.abteilungsName}">
+                <h:outputText value="#{abt.abteilungsName}" />
+            </p:column>
+            <p:column headerText="Führungskraft Name" sortBy="#{abt.fuehrungskraftName}" filterBy="#{abt.fuehrungskraftName}">
+                <h:outputText value="#{abt.fuehrungskraftName}" />
+            </p:column>
+            <p:column headerText="Führungskraft Vorname" sortBy="#{abt.fuehrungskraftVorname}" filterBy="#{abt.fuehrungskraftVorname}">
+                <h:outputText value="#{abt.fuehrungskraftVorname}" />
+            </p:column>
+        </p:dataTable>
+    </h:form>
+
+</h:body>
+</html>

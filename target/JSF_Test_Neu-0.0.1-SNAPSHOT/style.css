@@ -1,0 +1,105 @@
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+header, nav, footer, aside, section {
+    display: block;
+}
+
+header {
+    
+    background: #35424a;
+    color: #ffffff;
+    height: 85px;
+   border-bottom: #1E90FF 3px solid;    
+}
+header img{
+	margin-left: 30px;
+}
+
+header a {
+	color: #ffffff;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-size: 16px;
+	
+}
+header ul{
+	margin: 0;
+	padding: 0;
+	margin-top: 35px;
+}
+header li{
+	float: left;
+	display: inline;
+	padding: 0 15px 0 15px;
+}
+header #branding{
+	float:left;
+}
+header nav{
+	float:right;
+}
+#steuerunglinks {
+   background-color: #A4A4A4;
+    width: 194px;
+    float: left;
+    height: 1200px;
+    clear: both;
+}
+#steuerundlinks img {
+   
+    border:1px solid silver;
+}
+#steuerunglinks p {
+     margin-top: 165px;
+     margin-left: 15px;
+    
+}
+section p{
+	margin-top: 50px;
+   font-family: Garamond;
+   font-size: 20px;
+}
+
+#stapel {
+    height: 460px;
+    width: 1072px;
+
+   
+   
+}
+
+#stapel img {
+    position: absolute;
+    height: 460px;
+    width: 1076px;
+   float:right;
+    opacity: 0;
+}
+
+#stapel img:nth-of-type(1) {
+    animation: fade 30s ease-in-out infinite;
+}
+
+#stapel img:nth-of-type(2) {
+    animation: fade 30s 6s ease-in-out infinite;
+}
+
+#stapel img:nth-of-type(3) {
+    animation: fade 30s 12s ease-in-out infinite;
+}
+
+#stapel img:nth-of-type(4) {
+    animation: fade 30s 18s ease-in-out infinite;
+}
+
+#stapel img:nth-of-type(5) {
+    animation: fade 30s 24s ease-in-out infinite;
+}
+@keyframes fade {
+    6.66%, 20%          {opacity:1;}
+       0%, 26.66%, 100% {opacity:0;}
+}

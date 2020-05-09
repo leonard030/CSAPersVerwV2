@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+	<meta charset="ISO-8859-1" />
+	<title>Personalverwaltung</title>
+</h:head>
+
+<h:body>
+
+
+	<h:outputStylesheet library="css" name="style.css" />
+
+	<header>
+		<div class="container">
+			<img src="pics/headneu.jpg" width="165" height="85"
+				style="float: left" alt="Logo" />
+			<div id="branding"></div>
+			<nav>
+				<ul>
+					<li><a href="mb.htm">Mitarbeiter</a></li>
+					<li><a href="abt.htm">Abteilungen</a></li>
+					<li><a href="proj.htm">Projekte</a></li>
+					<li><a href="quali.htm">Qualifikationen</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+
+	<nav id="steuerunglinks"></nav>
+
+	<section>
+		<center>
+			<p>Qualifikation verwalten
+			<h2></h2>
+			<br /> <br />
+			<center><h:form id="qualifikationSaveForm" styleClass="form-horizontal">
+				<h:panelGrid columns="2">
+					<div class="form-group">
+						<h:outputLabel value="Art: " styleClass="control-label" />
+						<div class="col-xs-10">
+							<h:inputText value="#{qualifikation.qualifikationsArt}"
+								styleClass="form-control" />
+						</div>
+					</div>
+					<div class="form-group">
+						<h:outputLabel value="Name:" styleClass="control-label" />
+						<div class="col-xs-10">
+							<h:inputText value="#{qualifikation.qualifikationsName}"
+								styleClass="form-control" />
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-xs-offset-2 col-xs-10">
+							<h:commandButton value="Hinzufuegen"
+								action="#{qualifikation.saveQuali}"
+								styleClass="btn btn-primary btn-sm btnPos" />
+						</div>
+					</div>
+				</h:panelGrid>
+
+			</h:form> </center>
+
+			<BR /> <BR />
+
+			<h:form id="qualifikationUpdateForm" styleClass="form-horizontal">
+				<h:panelGrid columns="2">
+					<div class="form-group">
+						<h:outputLabel value="Nummer: " styleClass="control-label" />
+						<div class="col-xs-10">
+							<h:inputText value="#{qualifikation.qualifikationsNummer}"
+								styleClass="form-control" />
+						</div>
+					</div>
+					<div class="form-group">
+						<h:outputLabel value="Art: " styleClass="control-label" />
+						<div class="col-xs-10">
+							<h:inputText value="#{qualifikation.qualifikationsArt}"
+								styleClass="form-control" />
+						</div>
+					</div>
+					<div class="form-group">
+						<h:outputLabel value="Name:" styleClass="control-label" />
+						<div class="col-xs-10">
+							<h:inputText value="#{qualifikation.qualifikationsName}"
+								styleClass="form-control" />
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-xs-offset-2 col-xs-10">
+							<h:commandButton value="Hinzufuegen"
+								action="#{qualifikation.updateQuali}"
+								styleClass="btn btn-primary btn-sm btnPos" />
+						</div>
+					</div>
+				</h:panelGrid>
+
+			</h:form>
+			
+			<BR /> <BR />
+			
+			<h:form id="qualifikationDeleteForm" styleClass="form-horizontal">
+				<h:panelGrid columns="2">
+					<div class="form-group">
+						<h:outputLabel value="Nummer: " styleClass="control-label" />
+						<div class="col-xs-10">
+							<h:inputText value="#{qualifikation.qualifikationsNummer}"
+								styleClass="form-control" />
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-xs-offset-2 col-xs-10">
+							<h:commandButton value="Loeschen"
+								action="#{qualifikation.deleteQuali}"
+								styleClass="btn btn-primary btn-sm btnPos" />
+						</div>
+					</div>
+				</h:panelGrid>
+
+			</h:form>
+			
+			<BR /> <BR />
+			
+			 <!-- Form In Order To Show A Particular Student Details -->
+    <h3 class="marginLeft12">Suche nach Qualifikationen</h3>
+    <h:form id="showStudent">
+        <h:panelGrid columns="2">
+            <div class="form-group">
+                <h:outputLabel value="Qualifikation eingeben: " styleClass="control-label" />
+                <div class="col-xs-10">
+                    <h:inputText value="#{qualifikation.qualifikationsName}" styleClass="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-offset-2 col-xs-10">
+                    <h:commandButton value="Show Qualifikation" action="#{qualifikation.searchQuali}" styleClass="btn btn-primary btn-sm btnPos" />
+                </div>
+            </div>
+            <h:dataTable id="findQualiRecordDetails"  value="#{qualifikation.qualiList}" var="qualiList" styleClass="stud-table" headerClass="stud-table-header">
+                <h:column>
+                    <f:facet name="header">Nummer</f:facet>
+                    <h:outputText value="#{qualiList.qualifikationsNummer}" styleClass="stud-table-row" />
+                </h:column><h:column>
+                    <f:facet name="header">Art</f:facet>
+                    <h:outputText value="#{qualiList.qualifikationsArt}" styleClass="stud-table-row" />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Name</f:facet>
+                    <h:outputText value="#{qualiList.qualifikationsName}" styleClass="stud-table-row" />
+                </h:column>
+            </h:dataTable>
+        </h:panelGrid>
+    </h:form>
+    
+    <BR /> <BR />
+    
+        <h3 class="marginLeft12">Liste aller Qualifikationen</h3>
+    <h:form id="QualiListe">
+        <h:panelGrid columns="2">
+            <div class="form-group">
+                <div class="col-xs-offset-2 col-xs-10">
+                    <h:commandButton value="Show All Qualifikation" action="#{qualifikation.zeigeQuali}" styleClass="btn btn-primary btn-sm btnPos" />
+                </div>
+            </div>
+            <h:dataTable id="QualiRecords"  value="#{qualifikation.qualiList}" var="qualiList" styleClass="stud-table" headerClass="stud-table-header">
+                <h:column>
+                    <f:facet name="header">Nummer</f:facet>
+                    <h:outputText value="#{qualiList.qualifikationsNummer}" styleClass="stud-table-row" />
+                </h:column><h:column>
+                    <f:facet name="header">Art</f:facet>
+                    <h:outputText value="#{qualiList.qualifikationsArt}" styleClass="stud-table-row" />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Name</f:facet>
+                    <h:outputText value="#{qualiList.qualifikationsName}" styleClass="stud-table-row" />
+                </h:column>
+            </h:dataTable>
+        </h:panelGrid>
+    </h:form>
+
+			</p>
+		</center>
+	</section>
+</h:body>
+</html>
+
+
+
+
+

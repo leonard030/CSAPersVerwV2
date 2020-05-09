@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<!--
+   IN WEB.XML hinzufuegen:
+    <context-param>
+        <param-name>primefaces.THEME</param-name>
+        <param-value>nova-light</param-value>
+    </context-param>
+-->
+<h:head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta charset="utf-8" />
+	<f:metadata>
+		<f:viewAction action="#{abteilung.zeigeAbteilung()}" />
+	</f:metadata>
+	<link rel="stylesheet" href="main.css" />
+	<link
+		href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;900"
+		rel="stylesheet" />
+	<link
+		href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;800"
+		rel="stylesheet" />
+	<title>Abteilung Verwalten</title>
+</h:head>
+<h:body>
+	<!-- Header -->
+	<div id="header">
+		<h1>Personalverwaltung</h1>
+		<h3>admin</h3>
+	</div>
+
+	<!--    menu    -->
+	<div class="menu">
+		<ul>
+			<li><a href="index.xhtml">Home</a></li>
+			<li><a href="admin-personal.xhtml">Personal</a></li>
+			<li><a href="admin-abteilung.xhtml">Abteilungen</a></li>
+			<li><a href="admin-qualifikation.xhtml">Qualifikationen</a></li>
+			<li><a href="admin-projekt.xhtml">Projekte</a></li>
+		</ul>
+	</div>
+
+	<!--    Table   -->
+	<h:form id="form">
+		<p:growl id="msgs" showDetail="true" />
+
+		<p:dataTable id="cars1" widgetVar="cars1" var="abt"
+			value="#{abteilung.abteilungList}" editable="true"
+			style="margin-bottom:20px" scrollable="true" scrollHeight="150">
+			<f:facet name="header">
+                Abteilung Verwalten
+            </f:facet>
+
+			<p:column headerText="Abteilungsnummer"
+				sortBy="#{abt.abteilungsNummer}" filterBy="#{abt.abteilungsNummer}">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="#{abt.abteilungsNummer}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText id="modelInput" value="#{abt.abteilungsNummer}"
+							style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+
+			<p:column headerText="Abteilungsname" sortBy="#{abt.abteilungsName}"
+				filterBy="#{abt.abteilungsName}">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="#{abt.abteilungsName}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText value="#{abt.abteilungsName}" style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+
+			<p:column headerText="Führungskraft-Name"
+				sortBy="#{abt.fuehrungskraftName}"
+				filterBy="#{abt.fuehrungskraftName}">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="#{abt.fuehrungskraftName}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText value="#{abt.fuehrungskraftName}" style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+
+			<p:column headerText="Führungskraft-Vorname"
+				sortBy="#{abt.fuehrungskraftVorname}"
+				filterBy="#{abt.fuehrungskraftVorname}">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="#{abt.fuehrungskraftVorname}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText value="#{abt.fuehrungskraftVorname}"
+							style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+
+			<p:column style="width:70px">
+				<p:rowEditor />
+				<p:commandButton id="upd" action="#{abteilung.updateAbteilung(abt)}"
+					value="Update" />
+			</p:column>
+
+			<p:column style="width:70px">
+				<p:commandButton id="del" action="#{abteilung.deleteAbteilung(abt)}"
+					value="Delete" />
+			</p:column>
+		</p:dataTable>
+	</h:form>
+
+	<!-- ADD    -->
+	<div>
+		<h:form class="button">
+			<h:outputLink value="javascript:void(0)" onclick="PF('dlg').show();"
+				title="login">
+				<p:commandButton value="Add" />
+			</h:outputLink>
+
+			<p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+
+			<p:dialog header="Abteilung Hinzufuegen" widgetVar="dlg"
+				resizable="false">
+				<h:panelGrid columns="2" cellpadding="5">
+
+					<h:outputLabel for="abtName" value="Abteilungsname:" />
+					<p:inputText id="abtName" value="#{abteilung.abteilungsName}"
+						required="true" label="abtName" />
+
+					<h:outputLabel for="abtBossName" value="Führungskraft Name" />
+					<p:inputText id="abtBossName"
+						value="#{abteilung.fuehrungskraftName}" required="true"
+						label="abtBossName" />
+
+					<h:outputLabel for="abtBossVorname" value="Führungskraft Vorname:" />
+					<p:inputText id="abtBossVorname"
+						value="#{abteilung.fuehrungskraftVorname}" required="true"
+						label="abtBossVorname" />
+
+					<f:facet name="footer">
+						<p:commandButton value="Hinzufuegen" id="nonAjax"
+							action="#{abteilung.saveAbteilung()}" ajax="false" />
+					</f:facet>
+				</h:panelGrid>
+			</p:dialog>
+		</h:form>
+	</div>
+
+	<!--    Logout      -->
+	<div class="button">
+		<h:form>
+			<p:commandButton value="Logout" id="logutBtn"
+				action="#{logoutBean.logout}" ajax="false" />
+		</h:form>
+	</div>
+</h:body>
+</html>

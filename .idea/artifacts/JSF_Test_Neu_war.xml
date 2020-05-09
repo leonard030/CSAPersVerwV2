@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="JSF_Test_Neu:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>JSF_Test_Neu</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="JSF_Test_Neu-0.0.1-SNAPSHOT.war">
+      <element id="artifact" artifact-name="JSF_Test_Neu:war exploded" />
+    </root>
+  </artifact>
+</component>

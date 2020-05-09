@@ -1,0 +1,308 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:fmt="http://java.sun.com/jsp/jstl/fmt">
+
+<h:head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta charset="utf-8" />
+	<f:metadata>
+		<f:viewAction action="#{personal.zeigePerso}" />
+	</f:metadata>
+	<link rel="stylesheet" href="main.css" />
+	<link
+		href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;900"
+		rel="stylesheet" />
+	<link
+		href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;800"
+		rel="stylesheet" />
+	<title>Personal Verwalten</title>
+</h:head>
+<h:body>
+	<!-- Header -->
+	<div id="header">
+		<h1>Personalverwaltung</h1>
+		<h3>admin</h3>
+	</div>
+
+	<!--    menu    -->
+	<div class="menu">
+		<ul>
+			<li><a href="index.xhtml">Home</a></li>
+			<li><a href="admin-personal.xhtml">Personal</a></li>
+			<li><a href="admin-abteilung.xhtml">Abteilungen</a></li>
+			<li><a href="admin-qualifikation.xhtml">Qualifikationen</a></li>
+			<li><a href="admin-projekt.xhtml">Projekte</a></li>
+		</ul>
+	</div>
+
+	<!--    Table   -->
+	<h:form id="form">
+		<p:growl id="msgs" showDetail="true" />
+
+		<p:dataTable id="cars1" widgetVar="cars1" var="perso"
+			value="#{personal.persoList}" editable="true"
+			style="margin-bottom:20px" scrollable="true" scrollHeight="300">
+			<f:facet name="header">
+                Personal Verwalten
+            </f:facet>
+
+			<p:column headerText="Nummer" sortBy="#{perso.personalNummer}"
+				filterBy="#{perso.personalNummer}">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="#{perso.personalNummer}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText id="modelInput" value="#{perso.personalNummer}"
+							style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+
+			<p:column headerText="Name" sortBy="#{perso.personalName}"
+				filterBy="#{perso.personalName}">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="#{perso.personalName}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText value="#{perso.personalName}" style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+
+			<p:column headerText="Vorname" sortBy="#{perso.personalVorname}"
+				filterBy="#{perso.personalVorname}">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="#{perso.personalVorname}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText value="#{perso.personalVorname}" style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+
+			<p:column headerText="Geb.datum"
+				sortBy="#{perso.personalGeburtsdatum}"
+				filterBy="#{perso.personalGeburtsdatum}">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="#{perso.personalGeburtsdatum}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:datePicker value="#{perso.personalGeburtsdatum}" locale="de"
+							monthNavigator="true" pattern="dd.MM.yyyy" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+
+			<p:column headerText="Geschlecht"
+				sortBy="#{perso.personalGeschlecht}"
+				filterBy="#{perso.personalGeschlecht}">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="#{perso.personalGeschlecht}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText value="#{perso.personalGeschlecht}"
+							style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+
+			<p:column headerText="Rang" sortBy="#{perso.rang}"
+				filterBy="#{perso.rang}">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="#{perso.rang}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText value="#{perso.rang}" style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+
+			<p:column headerText="Abteilung" sortBy="#{perso.abteilung}"
+				filterBy="#{perso.abteilung}">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="#{perso.abteilung}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText value="#{perso.abteilung}" style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+
+			<p:column headerText="Projekte" sortBy="#{perso.projekte}"
+				filterBy="#{perso.projekte}">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="#{perso.projekte}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText value="#{perso.projekte}" style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+
+			<p:column headerText="Qualis" sortBy="#{perso.qualifikationen}"
+				filterBy="#{perso.qualifikationen}">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="#{perso.qualifikationen}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText value="#{perso.qualifikationen}" style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+
+			<p:column style="width:35px">
+				<p:rowEditor />
+				<p:commandButton action="#{personal.updatePerso(perso)}" value="UP"
+					style="width:35px;height:30px" />
+			</p:column>
+			
+			<p:column style="width:30px">
+				<p:commandButton action="#{personal.deletePerso(perso)}" value="X"
+					style="width:30px;height:30px" />
+			</p:column>
+		</p:dataTable>
+	</h:form>
+
+
+	<!-- ADD    -->
+	<div>
+		<h:form class="button">
+			<h:outputLink value="javascript:void(0)" onclick="PF('dlg').show();"
+				title="login">
+				<p:commandButton value="Add" />
+			</h:outputLink>
+
+			<p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+
+			<p:dialog header="Personal Hinzufuegen" widgetVar="dlg"
+				resizable="true">
+				<h:panelGrid columns="2" cellpadding="5">
+
+					<h:outputLabel for="persName" value="Name:" />
+					<p:inputText id="persName" value="#{personal.personalName}"
+						required="true" label="persName" />
+
+					<h:outputLabel for="persVorname" value="Vorname:" />
+					<p:inputText id="persVorname" value="#{personal.personalVorname}"
+						required="true" label="persVorname" />
+
+					<h:outputLabel for="persGebDat" value="Geburtsdatum:" />
+					<p:datePicker id="persGebDat"
+						value="#{personal.personalGeburtsdatum}" locale="de"
+						monthNavigator="true" pattern="dd.MM.yyyy" />
+
+					<h:outputLabel for="persSex" value="Geschlecht:" />
+					<p:inputText id="persSex" value="#{personal.personalGeschlecht}"
+						required="true" label="persSex" />
+
+					<h:outputLabel for="persRang" value="Rang:" />
+					<p:inputText id="persRang" value="#{personal.rang}" required="true"
+						label="persRang" />
+
+					<h:outputLabel for="persAbt" value="Abteilung:" />
+					<p:inputText id="persAbt" value="#{personal.abteilung}"
+						required="true" label="persAbt" />
+
+					<h:outputLabel for="persProj" value="Projekt: " />
+					<p:inputText id="persProj" value="#{personal.projekte}"
+						required="false" label="persAbt" />
+
+					<h:outputLabel for="persQuali" value="Qualifikation: " />
+					<p:inputText id="persQuali" value="#{personal.qualifikationen}"
+						required="false" label="persAbt" />
+
+
+					<f:facet name="footer">
+						<p:commandButton value="Hinzufügen" id="nonAjax"
+							action="#{personal.savePerso}" ajax="false" />
+					</f:facet>
+				</h:panelGrid>
+			</p:dialog>
+		</h:form>
+	</div>
+
+	<div>
+		<h:form class="button">
+			<h:outputLink value="javascript:void(0)"
+				onclick="PF('dlgquali').show();" title="login">
+				<p:commandButton value="Add Qualifikation" />
+			</h:outputLink>
+
+			<p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+
+			<p:dialog header="Qualifikation Hinzufügen" widgetVar="dlgquali"
+				resizable="true">
+				<h:panelGrid columns="2" cellpadding="5">
+
+					<h:outputLabel for="persQualiNummer" value="Nummer:" />
+					<p:inputText id="persQualiNummer"
+						value="#{personal.personalNummer}" required="true"
+						label="persQualiNummer" />
+
+					<h:outputLabel for="persQualiName" value="Qualifikationsname:" />
+					<p:inputText id="persQualiName" value="#{personal.qualifikationen}"
+						required="true" label="persQualiName" />
+
+					<f:facet name="footer">
+						<p:commandButton value="Hinzufügen" id="nonAjax"
+							action="#{personal.addQualifikation(personal)}" ajax="false" />
+					</f:facet>
+				</h:panelGrid>
+			</p:dialog>
+		</h:form>
+	</div>
+
+	<div>
+		<h:form class="button">
+			<h:outputLink value="javascript:void(0)"
+				onclick="PF('dlgproj').show();" title="login">
+				<p:commandButton value="Add Projekt" />
+			</h:outputLink>
+
+			<p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+
+			<p:dialog header="Projekt Hinzufügen" widgetVar="dlgproj"
+				resizable="true">
+				<h:panelGrid columns="2" cellpadding="5">
+
+					<h:outputLabel for="persProjNummer" value="Nummer:" />
+					<p:inputText id="persProjNummer" value="#{personal.personalNummer}"
+						required="true" label="persProjNummer" />
+
+					<h:outputLabel for="persProjName" value="Projektname:" />
+					<p:inputText id="persProjName" value="#{personal.projekte}"
+						required="true" label="persProjName" />
+
+					<f:facet name="footer">
+						<p:commandButton value="Hinzufügen" id="nonAjax"
+							action="#{personal.addProjekt(personal)}" ajax="false" />
+					</f:facet>
+				</h:panelGrid>
+			</p:dialog>
+		</h:form>
+	</div>
+
+	<!--    Logout      -->
+	<div class="button">
+		<h:form>
+			<p:commandButton value="Logout" id="logutBtn"
+				action="#{logoutBean.logout}" ajax="false" />
+		</h:form>
+	</div>
+
+</h:body>
+</html>

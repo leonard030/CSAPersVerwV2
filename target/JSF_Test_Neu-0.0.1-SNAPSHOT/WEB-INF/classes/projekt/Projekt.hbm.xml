@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="projekt.Projekt" table="projekt" catalog="personalverwaltung" optimistic-lock="version">
+          <id name="projektNummer" type="java.lang.Integer">
+            <column name="projektNummer" unique="true"/>
+            <generator class="increment" />
+        </id>
+        <property name="projektName" type="string">
+            <column name="projektName" />
+        </property>
+        <property name="projektFrist" type="string">
+            <column name="projektFrist" />
+        </property>
+    </class>
+</hibernate-mapping> 

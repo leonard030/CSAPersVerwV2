@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<!--
+   IN WEB.XML hinzufuegen:
+    <context-param>
+        <param-name>primefaces.THEME</param-name>
+        <param-value>nova-light</param-value>
+    </context-param>
+-->
+<h:head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta charset="utf-8" />
+	<f:metadata>
+		<f:viewAction action="#{qualifikation.zeigeQuali}" />
+	</f:metadata>
+	<link rel="stylesheet" href="main.css" />
+	<link
+		href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;900"
+		rel="stylesheet" />
+	<link
+		href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;800"
+		rel="stylesheet" />
+	<title>Qualifiaktionen</title>
+</h:head>
+<h:body>
+	<div id="header">
+		<h1>Personalverwaltung</h1>
+		<h3>user</h3>
+	</div>
+	<!-- Menu -->
+	<div class="menu">
+		<ul>
+			<li><a href="index.xhtml">Home</a></li>
+			<li><a href="personal.xhtml">Personal</a></li>
+			<li><a href="abteilung.xhtml">Abteilungen</a></li>
+			<li><a href="qualifikation.xhtml">Qualifikationen</a></li>
+			<li><a href="projekt.xhtml">Projekte</a></li>
+		</ul>
+	</div>
+
+	<!-- Table -->
+	<h:form id="form">
+		<p:dataTable var="quali" value="#{qualifikation.qualiList}" scrollable="true"
+			scrollHeight="150">
+			<!-- filteredValue="#{carBean.filteredCars}"-->
+			<f:facet name="header">Qualifikationen</f:facet>
+			<p:column headerText="Nummer" sortBy="#{quali.qualifikationsNummer}" filterBy="#{quali.qualifikationsNummer}">
+				<h:outputText value="#{quali.qualifikationsNummer}" />
+			</p:column>
+			<p:column headerText="Art" sortBy="#{quali.qualifikationsArt}"
+				filterBy="#{quali.qualifikationsArt}">
+				<h:outputText value="#{quali.qualifikationsArt}" />
+			</p:column>
+			<p:column headerText="Name" sortBy="#{quali.qualifikationsName}"
+				filterBy="#{quali.qualifikationsName}">
+				<h:outputText value="#{quali.qualifikationsName}" />
+			</p:column>
+		</p:dataTable>
+	</h:form>
+
+</h:body>
+</html>

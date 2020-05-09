@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="qualifikation.Qualifikation" table="qualifikation" catalog="personalverwaltung" optimistic-lock="version">
+          <id name="qualifikationsNummer" type="java.lang.Integer">
+            <column name="qualifikationsNummer" unique="true"/>
+            <generator class="increment" />
+        </id>
+        <property name="qualifikationsArt" type="string">
+            <column name="qualifikationsArt" />
+        </property>
+        <property name="qualifikationsName" type="string">
+            <column name="qualifikationsName" />
+        </property>
+    </class>
+</hibernate-mapping> 
